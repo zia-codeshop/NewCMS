@@ -7,13 +7,13 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-            <div class="breadcrumb-title pr-3">Add Agent</div>
+            <div class="breadcrumb-title pr-3">Add Visa</div>
             <div class="pl-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class='bx bx-home-alt'></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Add Agent</li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Visa</li>
                     </ol>
                 </nav>
             </div>
@@ -42,23 +42,12 @@
                         <div class="tab-pane fade show active" id="Edit-Profile">
                             <div class="card shadow-none border mb-0">
                                 <div class="card-body">
-                                    <h4 class="mb-5">Add Agent</h4>
-                                    <form action="{{ route('admin.agents.store') }}" method="POST" class="form-body" enctype="multipart/form-data">
+{{--                                    <h4 class="mb-5">Add Agent</h4>--}}
+                                    <form action="{{ route('admin.visas.store') }}" method="POST" class="form-body" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="row mt-3 mb-3">
                                             <div class="col-12 col-lg-6">
-                                                <div class="mb-md-0 mb-3 text-center">
-                                                    <img src="{{ asset('admin/images/avatars/no_image.jpg') }}" id="image_preview" class="rounded shadow" width="150" height="150" alt="profile image" />
-                                                </div>
-                                                <div class="mb-5 mt-3">
-                                                    <input type="file" name="image" id="image_input_field" class="form-control @error('image') is-invalid @enderror">
-                                                    @error('image')
-                                                    <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
                                                 <div class="form-group">
                                                     <label>Name <span class="text-danger">*</span></label>
                                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
@@ -69,32 +58,16 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Email <span class="text-danger">*</span></label>
-                                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
-                                                    @error('email')
+                                                    <label>Company <span class="text-danger">*</span></label>
+                                                    <input type="company" name="company" class="form-control @error('company') is-invalid @enderror" value="{{ old('company') }}">
+                                                    @error('company')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Phone <span class="text-danger">*</span></label>
-                                                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
-                                                    @error('phone')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Address <span class="text-danger">*</span></label>
-                                                    <textarea name="address" class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
-                                                    @error('address')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
+
+
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary m-1">Save</button>

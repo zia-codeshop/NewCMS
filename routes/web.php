@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AgentController;
+use App\Http\Controllers\Admin\VisaController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\SearchController;
@@ -43,5 +44,6 @@ Route::group(['prefix' => '/admin', 'middleware' => 'isAdmin', 'as' => 'admin.']
     Route::put('/siteInformation/update', [DashboardController::class, 'siteInformationUpdate'])->name('siteInformation.update');
 
     Route::resource('/agents', AgentController::class);
+    Route::resource('/visas', VisaController::class);
     Route::resource('/customers', CustomerController::class);
 });

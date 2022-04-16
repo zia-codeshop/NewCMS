@@ -255,6 +255,7 @@
                             <li>  <a href="{{ route('admin.agents.index') }}">
                                     <i class="bx bx-group" id="first-level"></i>Add Agent</a>
                             </li>
+
                             <li>
                                 <a href="{{ route('admin.agents.create') }}">
                                     <i class="bx bx-file" id="first-level"></i>Agent Report</a>
@@ -272,6 +273,10 @@
                         <ul>
                             <li>  <a href="{{ route('admin.customers.index') }}">
                                     <i class="bx bx-group" id="first-level"></i>Add Customer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.visas.index') }}">
+                                    <i class="bx bx-file" id="first-level"></i>Add Visa</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.customers.create') }}">
@@ -333,7 +338,7 @@
 		<!--End Back To Top Button-->
 		<!--footer -->
 		<div class="footer">
-			<p class="mb-0">Travel Management System @2022 | Developed By : <a href="#">Zia Khan</a>
+			<p class="mb-0">Travel Management System @2022 | Developed By : <a href="#">Zia Khan</a>  & <a href="#">Rahmat Ullah</a>
 			</p>
 		</div>
 		<!-- end footer -->

@@ -15,6 +15,7 @@ class CreateVisasTable extends Migration
     {
         Schema::create('visas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('company');
             $table->integer('ptr')->comment('1: on, 0: off')->nullable();
             $table->integer('medical')->comment('1: on, 0: off')->nullable();

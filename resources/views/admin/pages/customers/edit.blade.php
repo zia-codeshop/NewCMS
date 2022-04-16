@@ -35,7 +35,7 @@
                             <div class="card shadow-none border mb-0">
                                 <div class="card-body">
 {{--                                    <h4 class="mb-5">Edit Agent</h4>--}}
-                                    @foreach($agents as $agent)
+
                                     <form action="{{ route('admin.customers.update', $agent) }}" method="POST" class="form-body" enctype="multipart/form-data">
                                         @csrf
                                         @method('put')
@@ -89,11 +89,14 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                @endforeach
+
                                             </div>
+
                                         </div>
                                         <button type="submit" class="btn btn-primary m-1">Update</button>
                                     </form>
+
+
                                 </div>
                             </div>
                         </div>
