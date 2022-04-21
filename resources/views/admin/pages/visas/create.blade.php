@@ -2,6 +2,13 @@
 
 @section('content')
 
+
+    <style>
+        #others-element{
+            /*display: flex;*/
+        }
+    </style>
+
 <!--page-content-wrapper-->
 <div class="page-content-wrapper">
     <div class="page-content">
@@ -57,19 +64,65 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group">
+                                            </div>
+
+                                            <div class="col-12 col-lg-6">
+                                            <div class="form-group">
                                                     <label>Company <span class="text-danger">*</span></label>
-                                                    <input type="company" name="company" class="form-control @error('company') is-invalid @enderror" value="{{ old('company') }}">
+                                                    <input type="text" name="company" class="form-control @error('company') is-invalid @enderror" value="{{ old('company') }}">
                                                     @error('company')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                        </div>
 
+
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-12 col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Price <span class="text-danger">*</span></label>
+                                                    <input type="text" name="costprice" class="form-control @error('costprice') is-invalid @enderror" value="{{ old('costpricecostprice') }}">
+                                                    @error('costprice')
+                                                    <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-lg-6">
 
                                             </div>
                                         </div>
+
+
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-12 col-lg-6">
+                                                <label>Others</label>
+                                                <div class="form-group" id="others-element">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" name="ptr" class="custom-control-input" id="ptr">
+                                                        <label class="custom-control-label" for="ptr">ptr</label>
+                                                    </div>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" name="medical" class="custom-control-input" id="medical">
+                                                        <label class="custom-control-label" for="medical">medical</label>
+                                                    </div>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" name="insurance" class="custom-control-input" id="insurance">
+                                                        <label class="custom-control-label" for="insurance">insurance</label>
+                                                    </div>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" name="transport" class="custom-control-input" id="transport">
+                                                        <label class="custom-control-label" for="transport">transport</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <button type="submit" class="btn btn-primary m-1">Save</button>
                                     </form>
                                 </div>

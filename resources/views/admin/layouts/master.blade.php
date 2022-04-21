@@ -234,6 +234,13 @@
                 <!--navigation-->
                 <ul class="metismenu" id="menu">
 {{--                    <li>--}}
+{{--                        <a href="{{ route('admin.agents.create') }}">--}}
+{{--                            <div class="parent-icon"><i class="bx bx-group"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="menu-title">Add Agent/Customer</div>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
 {{--                        <a href="{{ route('admin.dashboard') }}">--}}
 {{--                            <div class="parent-icon"><i class="bx bx-home-alt"></i>--}}
 {{--                            </div>--}}

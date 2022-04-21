@@ -88,8 +88,7 @@ class AgentController extends Controller
     public function edit(Agent $agent)
     {
 
-        dd($agent);
-        exit();
+
         return view('admin.pages.agents.edit', [
             'user' => User::where('id', auth()->user()->id)->first(),
             'siteInformation' => SiteInformation::first(),

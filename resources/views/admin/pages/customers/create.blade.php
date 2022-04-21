@@ -47,58 +47,78 @@
                                         @csrf
 
                                         <div class="row mt-3 mb-3">
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-12 col-lg-12">
                                                 <div class="mb-md-0 mb-3 text-center">
                                                     <img src="{{ asset('admin/images/avatars/no_image.jpg') }}" id="image_preview" class="rounded shadow" width="150" height="150" alt="profile image" />
                                                 </div>
                                                 <div class="mb-5 mt-3">
                                                     <input type="file" name="image" id="image_input_field" class="form-control @error('image') is-invalid @enderror">
                                                     @error('image')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
                                                     <label>Name <span class="text-danger">*</span></label>
                                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                                                     @error('name')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
                                                     <label>Email <span class="text-danger">*</span></label>
                                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                                                     @error('email')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
                                                     <label>Phone <span class="text-danger">*</span></label>
                                                     <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
                                                     @error('phone')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
                                                     <label>Address <span class="text-danger">*</span></label>
-                                                    <textarea name="address" class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
+                                                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
                                                     @error('address')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                        </div>
 
 
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
-                                                    <label>Passport <span class="text-danger">*</span></label>
+                                                    <label>Passport <span class="text-danger"></span></label>
                                                     <input type="text" name="passport" class="form-control @error('passport') is-invalid @enderror" value="{{ old('passport') }}">
                                                     @error('passport')
                                                     <span class="invalid-feedback" role="alert">
@@ -106,10 +126,11 @@
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
 
-
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
-                                                    <label>CNIC <span class="text-danger">*</span></label>
+                                                    <label>CNIC <span class="text-danger"></span></label>
                                                     <input type="text" name="cnic" class="form-control @error('cnic') is-invalid @enderror" value="{{ old('cnic') }}">
                                                     @error('cnic')
                                                     <span class="invalid-feedback" role="alert">
@@ -117,8 +138,9 @@
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
 
-
+                                            <div class="col-12 col-lg-3">
                                                 <div class="form-group">
                                                     <label>DOB <span class="text-danger"></span></label>
                                                     <input type="date" name="dob" class="form-control @error('dob') is-invalid @enderror" value="{{ old('dob') }}">
@@ -128,6 +150,8 @@
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3">
 
                                             </div>
                                         </div>
