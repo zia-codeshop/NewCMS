@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class visa extends Model
 {
     use HasFactory;
+
+    public function getAgent(){
+        return $this->hasOne(Agent::class, 'id','seller_id');
+    }
 }

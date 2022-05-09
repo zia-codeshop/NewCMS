@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
+    public function welcome(){
+        $setting = SiteInformation::first();
+        return view('welcome', [
+            'setting' => SiteInformation::first(),
+        ]);
+    }
+
     public function index()
     {
 

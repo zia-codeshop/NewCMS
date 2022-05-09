@@ -57,7 +57,7 @@ class LoginController extends Controller
 
         {
 
-            if (auth()->user()->is_admin == 1) {
+            if (auth()->user()->is_admin == 1 ) {
 
                 return redirect(RouteServiceProvider::adminHome);
 

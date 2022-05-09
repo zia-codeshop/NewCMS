@@ -22,11 +22,11 @@ class UserSeeder extends Seeder
 
                 'name'=>'Admin',
 
-                'email'=>'superadmin@gmail.com',
+                'email'=>'admin@admin.com',
 
                 'is_admin'=>'1',
 
-                'password'=> Hash::make('password'),
+                'password'=> Hash::make('12345678'),
 
             ],
 
@@ -34,11 +34,11 @@ class UserSeeder extends Seeder
 
                 'name'=>'User',
 
-                'email'=>'user@gmail.com',
+                'email'=>'user@user.com',
 
                 'is_admin'=>'0',
 
-                'password'=> Hash::make('password'),
+                'password'=> Hash::make('12345678'),
 
             ],
 

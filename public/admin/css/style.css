@@ -19,3 +19,29 @@
      padding-left: 15px;
  }
 
+
+/* admin people page */
+#my-delete,#my-edit,#my-release, #my-win{
+    font-size: 1.5em;
+}
+
+#my-win,#my-release{
+    height: 1.8em;
+    padding-bottom: 10px;
+}
+
+.top-adding-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.top-adding-btn> #sec-btn{
+    color: #000000;
+
+}
+
+.top-adding-btn> #sec-btn:hover{
+    color: #fff;
+
+}
+

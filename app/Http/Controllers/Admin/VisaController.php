@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use App\Models\SiteInformation;
 use App\Models\User;
 use App\Models\visa;
@@ -21,7 +22,7 @@ class VisaController extends Controller
         return view('admin.pages.visas.index', [
             'user' => User::where('id', auth()->user()->id)->first(),
             'siteInformation' => SiteInformation::first(),
-            'visas' => visa::orderBy('id', 'DESC')->get(),
+            'visas' => visa::with('getAgent')->orderBy('id', 'DESC')->get(),
 
         ]);
     }
@@ -33,9 +34,12 @@ class VisaController extends Controller
      */
     public function create()
     {
+//        dd(Agent::where('role', "=", '1')->get());
+//        exit();
         return view('admin.pages.visas.create', [
             'user' => User::where('id', auth()->user()->id)->first(),
             'siteInformation' => SiteInformation::first(),
+            'agnts' => Agent::where('role', "=", '1')->get(),
         ]);
     }
 

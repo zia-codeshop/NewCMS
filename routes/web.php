@@ -1,13 +1,20 @@
 <?php
 
-use App\Http\Controllers\Admin\AgentController;
-use App\Http\Controllers\Admin\VisaController;
-use App\Http\Controllers\Admin\CustomerController;
+
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CdrController;
+use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\DynamicPeopleController;
+use App\Http\Controllers\ProjectReportController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\BulkCdrController;
+use App\Http\Controllers\JournalReportController;
+use App\Http\Controllers\WinCdrController;
+use App\Http\Controllers\ReleaseCdrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +27,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'welcome']);
+
 
 Auth::routes();
 
@@ -43,7 +49,34 @@ Route::group(['prefix' => '/admin', 'middleware' => 'isAdmin', 'as' => 'admin.']
     Route::put('/logos/update', [DashboardController::class, 'logosUpdate'])->name('logos.update');
     Route::put('/siteInformation/update', [DashboardController::class, 'siteInformationUpdate'])->name('siteInformation.update');
 
-    Route::resource('/agents', AgentController::class);
-    Route::resource('/visas', VisaController::class);
-    Route::resource('/customers', CustomerController::class);
+
+
+    Route::get('/people/create', [DynamicPeopleController::class, 'index'])->name('dynamic-people.create');
+    Route::post('/people/create', [DynamicPeopleController::class, 'customPeopleCreate'])->name('dynamic-people.create');
+    Route::resource('/peoples', PeopleController::class);
+
+    Route::get('/cdr/create', [BulkCdrController::class, 'index'])->name('dynamic-cdr.create');
+    Route::post('/cdr/create', [BulkCdrController::class, 'customCdrCreate'])->name('dynamic-cdr.create');
+    Route::get('/cdd/{name}', [ReleaseCdrController::class, 'release'])->name('cdrs.releaseUpdate');
+    Route::get('/cdr/{name}', [WinCdrController::class, 'win'])->name('cdrs.winUpdate');
+    Route::get('/win-cdr', [WinCdrController::class, 'index'])->name('win-cdr');
+    Route::get('/release-cdr', [ReleaseCdrController::class, 'index'])->name('release-cdr');
+    Route::resource('/cdrs', CdrController::class);
+
+//    Route::get('/',[HomeController::class, 'index']);
+    Route::resource('/projects', ProjectController::class);
+    Route::get('/project-report',[ProjectReportController::class, 'projectreport'])->name('project.report');
+    Route::get('/project/create', [ProjectController::class, 'index'])->name('dynamic-projects-field.insert');
+    Route::post('/projects/create', [ProjectController::class, 'customProjectCreate'])->name('dynamic-projects-field.insert');
+
+
+
+
+    Route::get('/journal-report',[JournalReportController::class, 'journalreport'])->name('journal.report');
+    Route::get('/project-wise-report',[JournalReportController::class, 'project_wise_report']);
+    Route::get('/account-wise-report',[JournalReportController::class, 'account_wise_report']);
+    Route::get('/journal/create', [JournalController::class, 'index'])->name('dynamic-Journals-field.insert');
+    Route::post('/Journals/create', [JournalController::class, 'customJournalCreate'])->name('dynamic-Journals-field.insert');
+
+
 });
