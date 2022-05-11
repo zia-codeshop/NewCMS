@@ -25,6 +25,8 @@ class SettingSeeder extends Seeder
 
                 'agency_youtube'=>'favicon-32x32.png',
 
+                'agency_instagram'=>'login-image.jpg',
+
 
             ],
 

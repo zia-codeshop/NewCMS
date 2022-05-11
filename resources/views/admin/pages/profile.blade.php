@@ -44,11 +44,6 @@
                                         <th>Email:</th>
                                         <td>{{ $user->email }}</td>
                                     </tr>
-
-                                    <tr>
-                                        <th>Gender:</th>
-                                        <td>{{ $user->gender }}</td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <div class="">

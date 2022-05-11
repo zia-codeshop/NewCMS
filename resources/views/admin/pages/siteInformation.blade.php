@@ -98,7 +98,7 @@
                                         <div class="row mt-3 mb-3">
                                             <div class="col-12 col-lg-6 border-right">
                                                 <div class="form-group">
-                                                    <label>Agency Name <span class="text-danger">*</span></label>
+                                                    <label>Name <span class="text-danger">*</span></label>
                                                     <input type="text" name="agency_name" class="form-control @error('agency_name') is-invalid @enderror" value="{{ old('agency_name', $siteInformation ? $siteInformation->agency_name : '') }}">
                                                     @error('agency_name')
                                                         <span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Agency Email <span class="text-danger">*</span></label>
+                                                    <label>Email <span class="text-danger">*</span></label>
                                                     <input type="email" name="agency_email" class="form-control @error('agency_email') is-invalid @enderror" value="{{ old('agency_email', $siteInformation ? $siteInformation->agency_email : '') }}">
                                                     @error('agency_email')
                                                         <span class="invalid-feedback" role="alert">
@@ -116,7 +116,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Agency Phone <span class="text-danger">*</span></label>
+                                                    <label>Phone <span class="text-danger">*</span></label>
                                                     <input type="text" name="agency_phone" class="form-control @error('agency_phone') is-invalid @enderror" value="{{ old('agency_phone', $siteInformation ? $siteInformation->agency_phone : '') }}">
                                                     @error('agency_phone')
                                                         <span class="invalid-feedback" role="alert">
@@ -125,7 +125,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Agency Address <span class="text-danger">*</span></label>
+                                                    <label>Address <span class="text-danger">*</span></label>
                                                     <textarea name="agency_address" class="form-control @error('agency_address') is-invalid @enderror">{{ old('agency_address', $siteInformation ? $siteInformation->agency_address : '') }}</textarea>
                                                     @error('agency_address')
                                                         <span class="invalid-feedback" role="alert">
@@ -133,71 +133,41 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Agency Privacy Policy <span class="text-danger">*</span></label>
-                                                    <textarea name="agency_privacy_policy" class="form-control @error('agency_privacy_policy') is-invalid @enderror">{{ old('agency_privacy_policy', $siteInformation ? $siteInformation->agency_privacy_policy : '') }}</textarea>
-                                                    @error('agency_privacy_policy')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Agency Terms & Conditions <span class="text-danger">*</span></label>
-                                                    <textarea name="agency_terms_and_conditions" class="form-control @error('agency_terms_and_conditions') is-invalid @enderror">{{ old('agency_terms_and_conditions', $siteInformation ? $siteInformation->agency_terms_and_conditions : '') }}</textarea>
-                                                    @error('agency_terms_and_conditions')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
+
                                             </div>
                                             <div class="col-12 col-lg-6">
-                                                <div class="form-group">
-                                                    <label>Agency Twitter</label>
-                                                    <input type="text" name="agency_twitter" class="form-control @error('agency_twitter') is-invalid @enderror" value="{{ old('agency_twitter', $siteInformation ? $siteInformation->agency_twitter : '') }}">
-                                                    @error('agency_twitter')
-                                                        <span class="invalid-feedback" role="alert">
+                                                <div class="row">
+                                                    <div class="col-lg-6 border-right">
+                                                        <div class="mb-3">
+                                                            <img src="{{ asset( $siteInformation ? $siteInformation->agency_instagram ? 'storage/'.$siteInformation->agency_instagram : 'admin/images/avatars/no_image.jpg' : 'admin/images/avatars/no_image.jpg') }}" id="image_preview" class="rounded shadow" width="130" height="130" alt="profile image" />
+                                                            <h6 class="mt-2">Login Page Image</h6>
+                                                        </div>
+                                                        <div class="mb-5 mt-3 w-50">
+                                                            <input type="file" name="agency_instagram" id="image_input_field" class="form-control @error('agency_instagram') is-invalid @enderror">
+                                                            @error('agency_instagram')
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Agency Facebook</label>
-                                                    <input type="text" name="agency_facebook" class="form-control @error('agency_facebook') is-invalid @enderror" value="{{ old('agency_facebook', $siteInformation ? $siteInformation->agency_facebook : '') }}">
-                                                    @error('agency_facebook')
-                                                        <span class="invalid-feedback" role="alert">
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <img src="{{ asset( $siteInformation ? $siteInformation->agency_youtube ? 'storage/'.$siteInformation->agency_youtube : 'admin/images/avatars/no_image.jpg' : 'admin/images/avatars/no_image.jpg') }}" id="image_preview_1" class="rounded shadow" width="130" height="130" alt="profile image" />
+                                                            <h6 class="mt-2">Favicon</h6>
+                                                        </div>
+                                                        <div class="mb-5 mt-3 w-50">
+                                                            <input type="file" name="agency_youtube" id="image_input_field_1" class="form-control @error('agency_youtube') is-invalid @enderror">
+                                                            @error('agency_youtube')
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
-                                                    @enderror
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Agency Linkedin</label>
-                                                    <input type="text" name="agency_linkedin" class="form-control @error('agency_linkedin') is-invalid @enderror" value="{{ old('agency_linkedin', $siteInformation ? $siteInformation->agency_linkedin : '') }}">
-                                                    @error('agency_linkedin')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Agency Instagram</label>
-                                                    <input type="text" name="agency_instagram" class="form-control @error('agency_instagram') is-invalid @enderror" value="{{ old('agency_instagram', $siteInformation ? $siteInformation->agency_instagram : '') }}">
-                                                    @error('agency_instagram')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Agency Youtube</label>
-                                                    <input type="text" name="agency_youtube" class="form-control @error('agency_youtube') is-invalid @enderror" value="{{ old('agency_youtube', $siteInformation ? $siteInformation->agency_youtube : '') }}">
-                                                    @error('agency_youtube')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
+
+
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary m-1">Save</button>

@@ -36,41 +36,37 @@
         </li>
 
         <li>
-            <a class="has-arrow" href="javaScript:">
-                <div class="parent-icon"><i class='bx bxs-doughnut-chart'></i>
-                </div>
-                <div class="menu-title">project</div>
+            <a href="{{ route('admin.projects.index') }}">
+                <div class="parent-icon"><i class='bx bx-building-house'></i></div>
+                <div class="menu-title">Projects</div>
             </a>
-            <ul>
-                <li>  <a href="{{ route('admin.projects.index') }}">
-                        <i class="bx bx-group" id="first-level"></i>Add Project</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.projects.create') }}">
-
-                        <i class="bx bx-receipt" id="first-level"></i></a>
-                </li>
-            </ul>
         </li>
 
-        <li class="menu-label">General Setting</li>
         <li>
-            <a class="has-arrow" href="javaScript:;">
-                <div class="parent-icon"><i class="bx bx-spa"></i>
-                </div>
-                <div class="menu-title">Settings</div>
+            <a href="{{ route('admin.journals.index') }}">
+                <div class="parent-icon"><i class='bx bx-dollar-circle'></i></div>
+                <div class="menu-title">Journal</div>
             </a>
+        </li>
+
+        
+        <li class="menu-label">General Setting</li>
+        <li><a class="has-arrow" href="javaScript:;"><div class="parent-icon"><i class="bx bx-spa"></i></div><div class="menu-title">Settings</div></a>
             <ul>
-                <li>  <a href="{{ route('admin.profile', $user) }}">
-                        <i class="bx bx-user-circle" id="first-level"></i>Admin</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.siteInformation') }}">
-                        <i class="bx bx-file" id="first-level"></i>Site</a>
-                </li>
+                <li><a href="{{ route('admin.profile', $user) }}"><i class="bx bx-user-circle" id="first-level"></i>Admin</a></li>
+                <li><a href="{{ route('admin.siteInformation') }}"><i class="bx bx-file" id="first-level"></i>Site</a></li>
             </ul>
         </li>
     </ul>
+
+{{--    <li>--}}
+{{--        <a class="has-arrow" href="javaScript:"><div class="parent-icon"><i class='bx bx-dollar-circle'></i></div><div class="menu-title">Journal</div></a>--}}
+{{--        <ul>--}}
+{{--            <li><a href="{{ route('admin.journals.index') }}"><i class="bx bxs-doughnut-chart" id="first-level"></i>Add Journal</a></li>--}}
+{{--            <li><a href="{{ route('admin.project-wise-report') }}"><i class="bx bxs-bar-chart-alt-2" id="first-level"></i>Project Wise Report</a></li>--}}
+{{--            <li><a href="{{ route('admin.account-wise-report') }}"><i class="bx bxs-bar-chart-alt-2" id="first-level"></i>Account Wise Report</a></li>--}}
+{{--        </ul>--}}
+{{--    </li>--}}
     <!--end navigation-->
 
     {{--                    <li>--}}

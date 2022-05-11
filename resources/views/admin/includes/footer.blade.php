@@ -4,7 +4,7 @@
 <!--End Back To Top Button-->
 <!--footer -->
 <div class="footer">
-    <p class="mb-0">Construction  Management System @2022 | Developed By : <a href="https://www.techancor.com/">Techancor</a> &  <a href="https://web.facebook.com/zia.progrmr">Zia Khan</a
+    <p class="mb-0">Construction  Management System @2022 | Developed By : <a href="https://www.techancor.com/">Techancor</a> &  <a href="https://web.facebook.com/zia.unseen">Zia Khan</a
     </p>
 </div>
 <!-- end footer -->
@@ -58,6 +58,8 @@
 <script src="{{ asset('admin/js/app.js') }}"></script>
 <!--Data Tables js-->
 <script src="{{ asset('admin/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+
+<script src="{{asset('admin/plugins/select2/js/select2.min.js')}}"></script>
 
 <script>
     /*switcher*/

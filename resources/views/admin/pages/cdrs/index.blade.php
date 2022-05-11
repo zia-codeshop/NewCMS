@@ -58,17 +58,17 @@
             <div class="card-header">Pending cdrs Data</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example2" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Account Holder</th>
-                                <th>Amount</th>
-                                <th>Ref #</th>
-                                <th>Cdr #</th>
-                                <th>Status</th>
-                                <th>Project</th>
-                                <th>Action</th>
+                                <th id="custom-table-heading">#</th>
+                                <th id="custom-table-heading">Account Holder</th>
+                                <th id="custom-table-heading">Amount</th>
+                                <th id="custom-table-heading">Ref #</th>
+                                <th id="custom-table-heading">Cdr #</th>
+                                <th id="custom-table-heading">Status</th>
+                                <th id="custom-table-heading">Project</th>
+                                <th id="custom-table-heading">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,17 +119,17 @@
                                 @endforeach
                             @endif
                         </tbody>
-{{--                        <tfoot>--}}
-{{--                            <tr>--}}
-{{--                                <th>#</th>--}}
-{{--                                <th>Name</th>--}}
-{{--                                <th>Image</th>--}}
-{{--                                <th>Email</th>--}}
-{{--                                <th>Contact</th>--}}
-{{--                                <th>Address</th>--}}
-{{--                                <th>Action</th>--}}
-{{--                            </tr>--}}
-{{--                        </tfoot>--}}
+                        <tfoot>
+                        <tr>
+                            <th  style="text-align:right">Summary:</th>
+                            <th colspan="2" style="text-align:right">Credit:</th>
+                            <th ></th>
+                            <th ></th>
+                            <th ></th>
+                            <th ></th>
+                            <th ></th>
+                        </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -142,17 +142,143 @@
 
 @section('script')
 
-<script>
-    $(document).ready(function () {
-        //Default data table
-        $('#example').DataTable();
-        var table = $('#example2').DataTable({
-            lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#example').DataTable( {
+                //calculation starts
+                "footerCallback": function ( row, data, start, end, display ) {
+                    var api = this.api();
+
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function ( i ) {
+                        return typeof i === 'string' ?
+                            i.replace(/[\$,]/g, '')*1 :
+                            typeof i === 'number' ?
+                                i : 0;
+                    };
+
+                    total = api
+                        .column( 2 )
+                        .data()
+                        .reduce( function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0 );
+
+                    console.log(total);
+
+                    // Total over this page
+                    pageTotal = api
+                        .column(2, { page: 'current'} )
+                        .data()
+                        .reduce( function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0 );
+
+                    console.log('<br>'+ pageTotal);
+
+
+                    // Update footer
+                    $( api.column( 1 ).footer() ).html(
+                        'Rs: '+pageTotal +' ( Rs: '+ total +' total)'
+                    );
+
+                }
+                //butttons
+                ,
+                buttons: [
+                    {
+                        extend:    'pageLength',
+                        className: 'box-shadow--4dp btn-sm-menu'
+                    },
+                    {
+
+                        extend:    'copy',
+                        titleAttr:  'copy',
+                        text:      '<i class="fadeIn animated bx bx-copy"></i>',
+                        className: 'btn btn-info box-shadow--4dp btn-sm-menu',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+
+                    },
+                    {
+                        extend:    'excel',
+                        titleAttr:    'excel',
+                        text:      '<i class="fadeIn animated bx bx-file"></i> ',
+                        className: 'btn btn-success box-shadow--4dp btn-sm-menu',
+                        messageTop: 'Pending Cdrs Data',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3,4,5,6,7]
+
+                        }
+
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        titleAttr: 'PDF',
+                        extension: ".pdf",
+                        filename: "Pending Cdrs Data",
+                        title: "",
+                        text: '<i class="fadeIn animated bx bx-file-blank"></i> ',
+                        className: 'btn btn-warning box-shadow--4dp btn-sm-menu',
+                        messageTop: 'Pending Cdrs Data',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3,4,5,6,7]
+
+                        },
+
+
+                    },
+
+                    {
+                        extend: 'print',
+                        titleAttr: 'print',
+                        text:      '<i class="fadeIn animated bx bx-printer"></i> ',
+                        className: 'btn btn-danger box-shadow--4dp btn-sm-menu',
+                        messageTop: 'Pending Cdrs Data',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3,4,5,6,7]
+
+                        },
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '10pt' )
+                                .prepend(
+                                    // '<div><img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;"  alt="logo"/></div>'
+                                );
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
+                        },
+
+
+
+                    },
+                    {
+                        extend:    'colvis',
+                        titleAttr:    'Filter Column',
+                        text:      '<i class="fadeIn animated bx bx-filter"></i> ',
+                        className: 'btn btn-dark box-shadow--4dp btn-sm-menu'
+                    },
+
+                ],
+                lengthChange: false,
+
+            } );
+
+            table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+
         });
-        table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-    });
-</script>
+        //
+        //
+
+
+
+
+
+    </script>
 
 
 

@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 
             [
 
-                'name'=>'Admin',
+                'name'=>'admin',
 
                 'email'=>'admin@admin.com',
 
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
 
             [
 
-                'name'=>'User',
+                'name'=>'user',
 
                 'email'=>'user@user.com',
 

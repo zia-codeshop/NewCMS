@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Journal extends Model
 {
     use HasFactory,SoftDeletes;
-
-    protected $fillable = [];
+    public function getProject(){
+        return $this->hasOne(Project::class, 'id', 'project_id');
+    }
+    public function getPeople(){
+        return $this->hasOne(People::class, 'id', 'people_id');
+    }
 }

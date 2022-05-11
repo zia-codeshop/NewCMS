@@ -10,8 +10,11 @@
     @else
         <title>{{$setting->agency_name}} </title>
     @endif
+    <link rel="icon" {{asset($setting? $setting->ageny_youtube ? 'storage/'.$setting->ageny_youtube: '' : '')}} type="image/png" />
+
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700|Fira+Sans:600" rel="stylesheet">
     {{--    <link href="{{asset('asset/images/favicon.png')}}" rel="icon" type="image/png">--}}
+
     <script src="https://unpkg.com/animejs@2.2.0/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <style>
@@ -344,7 +347,7 @@
 
                 <ul class="footer-social-links list-reset">
                     <li>
-                        <a href="https://www.facebook.com/zia.progrmr">
+                        <a href="https://web.facebook.com/zia.unseen">
                             <span class="screen-reader-text">Facebook</span>
                             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z" fill="#FFF"/>

@@ -2,6 +2,9 @@
 
 @section('content')
 
+    @php
+        $siteInformation = \App\Models\SiteInformation::first();
+    @endphp
 <!-- wrapper -->
 <div class="wrapper">
     <div class="section-authentication">
@@ -13,7 +16,7 @@
              <div class="card mb-0 shadow-none bg-transparent w-100 login-card rounded-0">
                 <div class="card-body p-md-5">
 {{--                 <img src="{{ asset($siteInformation ? $siteInformation->agency_logo ? 'storage/'.$siteInformation->agency_logo : '' : '') }}" width="180" alt=""/>--}}
-                    <link rel="icon" href="{{asset('admin/images/favicon-32x32.png')}}" type="image/png" />
+                    <link rel="icon" {{asset($siteInformation ? $siteInformation->ageny_youtube ? 'storage/'.$siteInformation->ageny_youtube: '' : '')}} type="image/png" />
 
                     <h4 class="mt-5"><strong>Welcome Back</strong></h4>
                     <p>Log in to your account using email & password</p>
@@ -91,7 +94,11 @@
            <div class="col-12 col-lg-7 col-xl-8 d-flex align-items-stretch">
              <div class="card mb-0 shadow-none bg-transparent w-100 rounded-0">
                 <div class="card-body p-md-5">
-                   <div class="text-center"><img src="{{ asset('admin/images/login-images/auth-img-7.png') }}" class="img-fluid" alt=""/></div>
+{{--                    <link rel="icon" type="image/png" />--}}
+
+                    <div><h4 class="mt-5 ml-1"><strong>{{$siteInformation ? $siteInformation->agency_name ? 'Welcome '. $siteInformation->agency_name: 'Welcome' : 'Welcome'}}</strong></h4></div>
+{{--                    <div class="text-center"><img src="https://images.unsplash.com/photo-1617113937231-7942715f868e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80" class="img-fluid" alt=""/></div>--}}
+                    <div class="text-center"><img src="{{asset($siteInformation? $siteInformation->agency_instagram ? 'storage/'.$siteInformation->agency_instagram: '' : '')}} " class="img-fluid" alt=""/></div>
                 </div>
              </div>
             </div>
@@ -99,12 +106,7 @@
            </div>
            <div class="card-footer bg-transparent px-md-5">
             <div class="d-flex align-items-center justify-content-between flex-wrap">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">Login With</li>
-                    <li class="list-inline-item"><a href="javascript:void();"><i class='bx bxl-facebook mr-1'></i>Facebook</a></li>
-                    <li class="list-inline-item"><a href="javascript:void();"><i class='bx bxl-twitter mr-1'></i>Twitter</a></li>
-                    <li class="list-inline-item"><a href="javascript:void();"><i class='bx bxl-google mr-1'></i>Google</a></li>
-                </ul>
+
 
                 @include('auth.layouts._developedBy')
 

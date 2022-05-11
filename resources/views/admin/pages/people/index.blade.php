@@ -118,8 +118,85 @@
         //Default data table
         $('#example').DataTable();
         var table = $('#example2').DataTable({
+            buttons: [
+                {
+                    extend:    'pageLength',
+                    className: 'box-shadow--4dp btn-sm-menu'
+                },
+                {
+
+                    extend:    'copy',
+                    titleAttr:  'copy',
+                    text:      '<i class="fadeIn animated bx bx-copy"></i>',
+                    className: 'btn btn-info box-shadow--4dp btn-sm-menu',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+
+                },
+                {
+                    extend:    'excel',
+                    titleAttr:    'excel',
+                    text:      '<i class="fadeIn animated bx bx-file"></i> ',
+                    className: 'btn btn-success box-shadow--4dp btn-sm-menu',
+                    messageTop: 'Pending Cdrs Data',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3,4,5,6,7]
+
+                    }
+
+                },
+                {
+                    extend: 'pdfHtml5',
+                    titleAttr: 'PDF',
+                    extension: ".pdf",
+                    filename: "Pending Cdrs Data",
+                    title: "",
+                    text: '<i class="fadeIn animated bx bx-file-blank"></i> ',
+                    className: 'btn btn-warning box-shadow--4dp btn-sm-menu',
+                    messageTop: 'Pending Cdrs Data',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3,4,5,6,7]
+
+                    },
+
+
+                },
+
+                {
+                    extend: 'print',
+                    titleAttr: 'print',
+                    text:      '<i class="fadeIn animated bx bx-printer"></i> ',
+                    className: 'btn btn-danger box-shadow--4dp btn-sm-menu',
+                    messageTop: 'Pending Cdrs Data',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3,4,5,6,7]
+
+                    },
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+                            .prepend(
+                                // '<div><img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;"  alt="logo"/></div>'
+                            );
+
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    },
+
+
+
+                },
+                {
+                    extend:    'colvis',
+                    titleAttr:    'Filter Column',
+                    text:      '<i class="fadeIn animated bx bx-filter"></i> ',
+                    className: 'btn btn-dark box-shadow--4dp btn-sm-menu'
+                },
+
+            ],
             lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
         });
         table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
     });

@@ -2,19 +2,21 @@
 
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DynamicCdrController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CdrController;
-use App\Http\Controllers\PeopleController;
-use App\Http\Controllers\DynamicPeopleController;
+use App\Http\Controllers\Admin\CdrController;
+use App\Http\Controllers\Admin\PeopleController;
+use App\Http\Controllers\Admin\DynamicPeopleController;
 use App\Http\Controllers\ProjectReportController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\JournalController;
-use App\Http\Controllers\BulkCdrController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\JournalController;
+use App\Http\Controllers\Admin\DynamicProjectController;
+use App\Http\Controllers\Admin\DynamicJournalController;
 use App\Http\Controllers\JournalReportController;
-use App\Http\Controllers\WinCdrController;
-use App\Http\Controllers\ReleaseCdrController;
+use App\Http\Controllers\Admin\WinCdrController;
+use App\Http\Controllers\Admin\ReleaseCdrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +57,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'isAdmin', 'as' => 'admin.']
     Route::post('/people/create', [DynamicPeopleController::class, 'customPeopleCreate'])->name('dynamic-people.create');
     Route::resource('/peoples', PeopleController::class);
 
-    Route::get('/cdr/create', [BulkCdrController::class, 'index'])->name('dynamic-cdr.create');
-    Route::post('/cdr/create', [BulkCdrController::class, 'customCdrCreate'])->name('dynamic-cdr.create');
+    Route::get('/cdr/create', [DynamicCdrController::class, 'index'])->name('dynamic-cdr.create');
+    Route::post('/cdr/create', [DynamicCdrController::class, 'customCdrCreate'])->name('dynamic-cdr.create');
     Route::get('/cdd/{name}', [ReleaseCdrController::class, 'release'])->name('cdrs.releaseUpdate');
     Route::get('/cdr/{name}', [WinCdrController::class, 'win'])->name('cdrs.winUpdate');
     Route::get('/win-cdr', [WinCdrController::class, 'index'])->name('win-cdr');
@@ -65,18 +67,17 @@ Route::group(['prefix' => '/admin', 'middleware' => 'isAdmin', 'as' => 'admin.']
 
 //    Route::get('/',[HomeController::class, 'index']);
     Route::resource('/projects', ProjectController::class);
-    Route::get('/project-report',[ProjectReportController::class, 'projectreport'])->name('project.report');
-    Route::get('/project/create', [ProjectController::class, 'index'])->name('dynamic-projects-field.insert');
-    Route::post('/projects/create', [ProjectController::class, 'customProjectCreate'])->name('dynamic-projects-field.insert');
+
+    Route::get('/project/create', [DynamicProjectController::class, 'index'])->name('dynamic-project.create');
+    Route::post('/project/create', [DynamicProjectController::class, 'customProjectCreate'])->name('dynamic-project.create');
 
 
 
-
-    Route::get('/journal-report',[JournalReportController::class, 'journalreport'])->name('journal.report');
-    Route::get('/project-wise-report',[JournalReportController::class, 'project_wise_report']);
-    Route::get('/account-wise-report',[JournalReportController::class, 'account_wise_report']);
-    Route::get('/journal/create', [JournalController::class, 'index'])->name('dynamic-Journals-field.insert');
-    Route::post('/Journals/create', [JournalController::class, 'customJournalCreate'])->name('dynamic-Journals-field.insert');
+    Route::resource('/journals', JournalController::class );
+    Route::get('/project-wise-report',[DynamicJournalController::class, 'project_wise_report'])->name('project-wise-report');
+    Route::get('/account-wise-report',[DynamicJournalController::class, 'account_wise_report'])->name('account-wise-report');
+    Route::get('/journal/create', [DynamicJournalController::class, 'index'])->name('dynamic-journal.create');
+    Route::post('/Journals/create', [JournalController::class, 'customJournalCreate'])->name('dynamic-journal.create');
 
 
 });

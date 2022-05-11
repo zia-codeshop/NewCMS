@@ -2,17 +2,20 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
   <head>
-    <!-- Required meta tags -->
+
+
+
+  <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $siteInformation->agency_name }}</title>
     <!--favicon-->
-{{--    <link rel="icon" href="{{ asset($siteInformation ? $siteInformation->agency_logo ? 'storage/'.$siteInformation->agency_logo : '' : '') }}" type="image/png"/>--}}
-      <link rel="icon" href="{{asset('admin/images/favicon-32x32.png')}}" type="image/png" />
+    <link rel="icon" href="{{ asset($siteInformation ? $siteInformation->agency_youtube ? 'storage/'.$siteInformation->agency_youtube : '' : '') }}" type="image/png"/>
+{{--      <link rel="icon" href="{{asset('admin/images/favicon-32x32.png')}}" type="image/png" />--}}
 	<!-- loader-->
     <link href="{{ asset('admin/css/pace.min.css') }}" rel="stylesheet"/>
     <script src="{{ asset('admin/js/pace.min.js') }}"></script>
@@ -29,7 +32,7 @@
   <body class="{{ Route::currentRouteName() == 'password.request' ? 'bg-forgot' : '' }}">
 
 
-        @yield('content')
+  @yield('content')
 
 
         <!--start switcher-->
